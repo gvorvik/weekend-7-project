@@ -18,7 +18,7 @@ const studentReviewReducer = (state = {}, action) => {
     else if(action.type === 'SUPPORT_RATING') {
         return {...state, supportRating: action.payload};
     }
-    else if(action.type === 'SUBMIT_FEEDBACK') {
+    else if(action.type === 'SUBMIT_COMMENT') {
         return {...state, feedbackComment: action.payload};
     }
     else if(action.type === 'CLEAR_FEEDBACK') {

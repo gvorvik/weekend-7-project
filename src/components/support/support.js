@@ -16,7 +16,8 @@ class Support extends Component {
     return (
       <div>
         <h1>Hello Support</h1>
-        <select onChange={this.handleSupportRating} name="supportRatings">
+        <select onChange={this.handleSupportRating} defaultValue="" name="supportRatings">
+          <option disabled value=""> -- select an option -- </option>
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>

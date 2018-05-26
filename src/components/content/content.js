@@ -16,7 +16,8 @@ class Content extends Component {
     return (
       <div>
         <h1>How well are you understanding today's new content?</h1>
-        <select onChange={this.handleContentUnderstandingRating} name="contentRatings">
+        <select onChange={this.handleContentUnderstandingRating} defaultValue="" name="contentRatings">
+          <option disabled value=""> -- select an option -- </option>
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>

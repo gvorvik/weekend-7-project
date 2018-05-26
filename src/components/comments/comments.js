@@ -11,7 +11,8 @@ class Comments extends Component {
     super(props);
 
     this.state = {
-      comment: ''
+      comment: '',
+      submitted: false,
     };
   }
 
@@ -21,23 +22,31 @@ class Comments extends Component {
     });
   }
 
-  sendFeedback = () => {
+  sendComment = () => {
     if (this.state.comment === '') {
       return alert('Please comment on your day\'s experience!');
     }
-    let action = {type: 'SUBMIT_FEEDBACK', payload: this.state.comment};
+    let action = {type: 'SUBMIT_COMMENT', payload: this.state.comment};
     this.props.dispatch(action);
+    this.handleToggleClick();
     console.log(this.state.comment);
   };
+
+  handleToggleClick = () => {
+    this.setState({
+      submitted: !this.state.submitted,
+    });
+  }
 
   render() {
     return (
       <div>
           <h1>Please leave any comments below</h1>
-          <input onChange={this.handleCommentInput} type="text"/>
-          <button onClick={this.sendFeedback}>Submit Feedback</button>
+          <textarea onChange={this.handleCommentInput} rows="5" cols="20"></textarea>
           <br/>
-          <Link to='/submission'>Next Page</Link>
+          {this.state.submitted ? <Link onClick={this.handleToggleClick} to='/submission'>Next Page</Link>:
+          <button onClick={this.sendComment}>Submit Comment</button>}
+    
       </div>
     );
   }

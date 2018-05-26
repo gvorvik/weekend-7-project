@@ -16,7 +16,8 @@ class Feeling extends Component {
         return (
             <div>
                 <h1>How are you feeling today?</h1>
-                <select onChange={this.handleFeelingRating} name="feelingRatings">
+                <select onChange={this.handleFeelingRating} defaultValue="" name="feelingRatings">
+                    <option disabled value=""> -- select an option -- </option>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
