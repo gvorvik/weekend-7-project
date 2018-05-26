@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import {connect} from 'react-redux';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+
 
 
 
@@ -10,6 +12,7 @@ class Submission extends Component {
     return (
       <div>
           <h1>Hello Submission</h1>
+          <Link to='/'>New Feedback</Link>
       </div>
     );
   }
