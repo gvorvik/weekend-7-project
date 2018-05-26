@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import {connect} from 'react-redux';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.css';
+
+
 
 class App extends Component {
   render() {
@@ -16,4 +20,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default connect()(App);
