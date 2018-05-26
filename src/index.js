@@ -13,6 +13,14 @@ const studentReviewReducer = (state = {}, action) => {
         state.feelingRating = action.payload;
         console.log(state);
     }
+    else if(action.type === 'CONTENT_UNDERSTANDING_RATING') {
+        state.contentUnderstandingRating = action.payload;
+        console.log(state);
+    }
+    else if(action.type === 'SUPPORT_RATING') {
+        state.supportRating = action.payload;
+        console.log(state);
+    }
     return state;
 };
 

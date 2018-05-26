@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
@@ -11,14 +10,13 @@ class Feeling extends Component {
     handleFeelingRating = (event) => {
         let action = {type: "FEELING_RATING", payload: event.target.value};
         this.props.dispatch(action);
-        console.log('number chosen', event.target.value);
     }
 
     render() {
         return (
             <div>
                 <h1>How are you feeling today?</h1>
-                <select onChange={this.handleFeelingRating} name="cars">
+                <select onChange={this.handleFeelingRating} name="feelingRatings">
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
