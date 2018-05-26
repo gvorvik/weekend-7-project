@@ -10,20 +10,16 @@ import logger from 'redux-logger';
 
 const studentReviewReducer = (state = {}, action) => {
     if(action.type === 'FEELING_RATING') {
-        state.feelingRating = action.payload;
-        console.log(state);
+        return {...state, feelingRating: action.payload};
     }
     else if(action.type === 'CONTENT_UNDERSTANDING_RATING') {
-        state.contentUnderstandingRating = action.payload;
-        console.log(state);
+        return {...state, contentUnderstandingRating: action.payload};
     }
     else if(action.type === 'SUPPORT_RATING') {
-        state.supportRating = action.payload;
-        console.log(state);
+        return {...state, supportRating: action.payload};
     }
     else if(action.type === 'SUBMIT_FEEDBACK') {
-        state.feedbackComment = action.payload;
-        console.log(state);
+        return {...state, feedbackComment: action.payload};
     }
     return state;
 };
