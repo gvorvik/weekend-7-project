@@ -32,10 +32,20 @@ if (process.env.DATABASE_URL) {
         password: process.env.DATABASE_SECRET || null, //env var: PGPASSWORD
         host: process.env.DATABASE_SERVER || 'localhost', // Server hosting the postgres database
         port: process.env.DATABASE_PORT || 5432, //env var: PGPORT
-        database: process.env.DATABASE_NAME || 'reflection_board', //env var: PGDATABASE or the name of your database (e.g. database: process.env.DATABASE_NAME || 'koala_holla',)
+        database: process.env.DATABASE_NAME || 'prime_feedback', //env var: PGDATABASE or the name of your database (e.g. database: process.env.DATABASE_NAME || 'koala_holla',)
         max: 10, // max number of clients in the pool
         idleTimeoutMillis: 30000, // how long a client is allowed to remain idle before being closed
     };
 }
 
-module.exports = new pg.Pool(config);
+const pool = pg.Pool(config);
+
+pool.on('connect', () => {
+    console.log('postgresql connected');
+})
+
+pool.on('error', (error) => {
+    console.log('Error with postgresql', error);
+});
+
+module.exports = pool;
