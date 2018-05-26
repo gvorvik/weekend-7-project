@@ -23,10 +23,10 @@ class Submission extends Component {
       data: this.props.reduxState.studentReviewReducer
     })
     .then((response) => {
-      console.log(response);
+      console.log('response from server', response);
     })
     .catch((error) => {
-      console.log(error);
+      console.log('error on axios post',error);
     });
 
     this.setState({

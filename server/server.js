@@ -13,6 +13,7 @@ app.use(express.static('build'));
 /** ---------- EXPRESS ROUTES ---------- **/
 
 app.get('/feedback', (req, res) => {
+
     pool.query('SELECT * FROM "feedback";')
     .then((result) => {
         res.send(result.rows);
@@ -20,12 +21,23 @@ app.get('/feedback', (req, res) => {
     .catch((error) => {
         console.log(error);
     });
-});
+
+}); //End app.get
+
 
 app.post('/feedback', (req, res) => {
-    console.log(req.body);
-    res.send('Post got got');
-});
+    let feedback = req.body;
+
+    //query to send data to database
+    pool.query(`INSERT INTO "feedback" ("feeling", "understanding", "support", "comments")
+    VALUES ($1, $2, $3, $4);`, [feedback.feelingRating, feedback.contentUnderstandingRating, feedback.supportRating, feedback.feedbackComment])
+    .then((response) => {
+        res.sendStatus(200);
+    })
+    .catch((error) => {
+        res.sendStatus(500);
+    });
+});//End app.post
 
 /** ---------- START SERVER ---------- **/
 app.listen(port, function () {

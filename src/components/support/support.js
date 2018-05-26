@@ -3,8 +3,6 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 
-
-
 class Support extends Component {
 
   handleSupportRating = (event) => {

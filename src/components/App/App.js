@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.css';
@@ -10,6 +9,7 @@ import Content from '../content/content';
 import Support from '../support/support';
 import Comments from '../comments/comments';
 import Submission from '../submission/submission';
+import Admin from '../admin/admin';
 
 
 
@@ -26,6 +26,7 @@ class App extends Component {
             <Route exact path='/support' component={Support} />
             <Route exact path='/comments' component={Comments} />
             <Route exact path='/submission' component={Submission} />
+            <Route exact path='/admin' component={Admin} />
           </header>
           <br />
         </div>
