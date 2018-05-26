@@ -8,15 +8,18 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import logger from 'redux-logger';
 
-const initialReducer = (state = {}, action) => {
-    console.log('initial reducer');
+const studentReviewReducer = (state = {}, action) => {
+    if(action.type === 'FEELING_RATING') {
+        state.feelingRating = action.payload;
+        console.log(state);
+    }
     return state;
 };
 
 const storeInstance = createStore(
 
     combineReducers({
-        initialReducer,
+        studentReviewReducer,
     }),
 
     applyMiddleware(logger),
