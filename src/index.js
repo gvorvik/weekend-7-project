@@ -21,6 +21,10 @@ const studentReviewReducer = (state = {}, action) => {
         state.supportRating = action.payload;
         console.log(state);
     }
+    else if(action.type === 'SUBMIT_FEEDBACK') {
+        state.feedbackComment = action.payload;
+        console.log(state);
+    }
     return state;
 };
 
