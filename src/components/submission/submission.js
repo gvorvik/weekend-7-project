@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
@@ -15,10 +16,31 @@ class Submission extends Component {
     };
   }
 
-  handleClick = () => {
+  handleFeedbackSubmission = () => {
+    axios({
+      method: 'POST',
+      url: '/feedback',
+      data: this.props.reduxState.studentReviewReducer
+    })
+    .then((response) => {
+      console.log(response);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+
     this.setState({
       submitted: !this.state.submitted,
-    })
+    });
+
+  }
+
+  startNewFeedback = () => {
+    let action = {type: 'CLEAR_FEEDBACK'};
+    this.props.dispatch(action);
+    this.setState({
+      submitted: !this.state.submitted,
+    });
   };
 
   render() {
@@ -32,8 +54,8 @@ class Submission extends Component {
         <p>Other comments: {this.props.reduxState.studentReviewReducer.feedbackComment}</p>
 
 
-        {this.state.submitted ? <Link to='/' onClick={this.handleClick}>New Feedback</Link>:
-          <button onClick={this.handleClick}>Submit Feedback</button>}
+        {this.state.submitted ? <Link to='/' onClick={this.startNewFeedback}>New Feedback</Link> :
+          <button onClick={this.handleFeedbackSubmission}>Submit Feedback</button>}
       </div>
     );
   }

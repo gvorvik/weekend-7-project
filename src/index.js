@@ -21,6 +21,9 @@ const studentReviewReducer = (state = {}, action) => {
     else if(action.type === 'SUBMIT_FEEDBACK') {
         return {...state, feedbackComment: action.payload};
     }
+    else if(action.type === 'CLEAR_FEEDBACK') {
+        return {};
+    }
     return state;
 };
 

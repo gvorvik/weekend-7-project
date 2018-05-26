@@ -10,6 +10,10 @@ app.use(express.static('build'));
 
 /** ---------- EXPRESS ROUTES ---------- **/
 
+app.post('/feedback', (req, res) => {
+    console.log(req.body);
+    res.send('Post got got');
+});
 
 /** ---------- START SERVER ---------- **/
 app.listen(port, function () {
