@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.css';
 
@@ -16,18 +16,20 @@ import Submission from '../submission/submission';
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">Feedback!</h1>
-          <h4><i>Don't forget it!</i></h4>
-          <Feeling />
-          <Content />
-          <Support />
-          <Comments />
-          <Submission />
-        </header>
-        <br/>
-      </div>
+      <Router>
+        <div className="App">
+          <header className="App-header">
+            <h1 className="App-title">Feedback!</h1>
+            <h4><i>Don't forget it!</i></h4>
+            <Route exact path='/' component={Feeling} />
+            <Route exact path='/content' component={Content} />
+            <Route exact path='/support' component={Support} />
+            <Route exact path='/comments' component={Comments} />
+            <Route exact path='/submission' component={Submission} />
+          </header>
+          <br />
+        </div>
+      </Router>
     );
   }
 }
