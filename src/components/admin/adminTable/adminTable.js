@@ -1,5 +1,13 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import Paper from '@material-ui/core/Paper';
+
+import AdminRow from './adminRow/adminRow';
 
 class AdminTable extends Component {
 
@@ -17,15 +25,15 @@ class AdminTable extends Component {
             method: 'GET',
             url: '/feedback'
         })
-        .then((response) => {
-            this.setState({
-                feedback: response.data
-            });
-            console.log(this.state.feedback);
-        })
-        .catch((error) => {
-            console.log('error with axios get', error);
-        })
+            .then((response) => {
+                this.setState({
+                    feedback: response.data
+                });
+                console.log(this.state.feedback);
+            })
+            .catch((error) => {
+                console.log('error with axios get', error);
+            })
     }
 
     componentDidMount() {
@@ -34,28 +42,52 @@ class AdminTable extends Component {
 
     render() {
 
-        let tableRows = this.state.feedback.map((feedback) => {
-            return <tr key={feedback.id}><td>{feedback.id}</td><td>{feedback.feeling}</td><td>{feedback.understanding}</td>
-            <td>{feedback.support}</td><td>{feedback.comments}</td></tr>;
-        })
+        let tableRows = this.state.feedback.map((element) => {
+            return <AdminRow
+                key={element.id}
+                id={element.id}
+                feeling={element.feeling}
+                understanding={element.understanding}
+                support={element.support}
+                comments={element.comments}
+            />
+        });
 
         return (
-            <div>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Feeling</th>
-                            <th>Content Understanding</th>
-                            <th>Staff Support</th>
-                            <th>Comments</th>
-                        </tr>
-                    </thead>
-                    <tbody>
+            <Paper>
+                <Table>
+                    <TableHead>
+                        <TableRow>
+                            <TableCell numeric>Review Number</TableCell>
+                            <TableCell numeric>Feeling</TableCell>
+                            <TableCell numeric>Content Understanding</TableCell>
+                            <TableCell numeric>Staff Support</TableCell>
+                            <TableCell>Comments</TableCell>
+                            <TableCell>Delete</TableCell>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
                         {tableRows}
-                    </tbody>
-                </table>
-            </div>
+                    </TableBody>
+                </Table>
+            </Paper>
+
+            // <div>
+            //     <table>
+            //         <thead>
+            //             <tr>
+            //                 <th>ID</th>
+            //                 <th>Feeling</th>
+            //                 <th>Content Understanding</th>
+            //                 <th>Staff Support</th>
+            //                 <th>Comments</th>
+            //             </tr>
+            //         </thead>
+            //         <tbody>
+            //             {tableRows}
+            //         </tbody>
+            //     </table>
+            // </div>
         );
     }
 }

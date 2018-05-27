@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import Button from '@material-ui/core/Button';
 
 const mapReduxStateToProps = (reduxState) => (
   { reduxState }
@@ -55,7 +56,7 @@ class Submission extends Component {
 
 
         {this.state.submitted ? <Link to='/' onClick={this.startNewFeedback}>New Feedback</Link> :
-          <button onClick={this.handleFeedbackSubmission}>Submit Feedback</button>}
+          <Button variant="raised" color="primary" onClick={this.handleFeedbackSubmission}>Submit Feedback</Button>}
       </div>
     );
   }

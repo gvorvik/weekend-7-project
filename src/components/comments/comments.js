@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import { Link } from 'react-router-dom';
-
+import Button from '@material-ui/core/Button';
 
 
 
@@ -45,7 +45,7 @@ class Comments extends Component {
           <textarea onChange={this.handleCommentInput} rows="5" cols="20"></textarea>
           <br/>
           {this.state.submitted ? <Link onClick={this.handleToggleClick} to='/submission'>Next Page</Link>:
-          <button onClick={this.sendComment}>Submit Comment</button>}
+          <Button variant="raised" color="primary" onClick={this.sendComment}>Submit Comment</Button>}
     
       </div>
     );
