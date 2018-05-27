@@ -50,6 +50,7 @@ class AdminTable extends Component {
                 understanding={element.understanding}
                 support={element.support}
                 comments={element.comments}
+                getFeedbackData = {this.getFeedbackData}
             />
         });
 

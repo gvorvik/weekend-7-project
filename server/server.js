@@ -39,6 +39,18 @@ app.post('/feedback', (req, res) => {
     });
 });//End app.post
 
+app.delete('/feedback/:id', (req, res) => {
+    let idToDelete = req.params.id
+    const queryText = 'DELETE FROM "feedback" WHERE "id" = $1';
+    pool.query(queryText, [idToDelete])
+        .then((response) => {
+            res.sendStatus(200);
+        })
+        .catch((error) => {
+            res.sendStatus(500);
+        });
+});
+
 /** ---------- START SERVER ---------- **/
 app.listen(port, function () {
     console.log('Listening on port: ', port);

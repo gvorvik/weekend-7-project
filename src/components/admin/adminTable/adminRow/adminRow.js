@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import TableRow from '@material-ui/core/TableRow';
+import axios from 'axios';
 import TableCell from '@material-ui/core/TableCell';
 import Button from '@material-ui/core/Button';
 
@@ -8,6 +9,17 @@ class AdminRow extends Component {
 
     handleDeleteFeedback = (id) => {
         console.log('Delete Button Ran!', id);
+        axios({
+          method: 'DELETE',
+          url: `/feedback/${id}`
+        })
+        .then((result) => {
+          console.log(result);
+          this.props.getFeedbackData();
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     };
     
   render() {
