@@ -36,6 +36,7 @@ class Comments extends Component {
     console.log(this.state.comment);
   };
 
+  //Function to toggle submit button and next page link
   handleToggleClick = () => {
     this.setState({
       submitted: !this.state.submitted,
@@ -50,7 +51,7 @@ class Comments extends Component {
             <Typography variant="headline" component="h1" color="primary">
               Please leave any comments below
             </Typography>
-            <textarea onChange={this.handleCommentInput} rows="5" cols="20"></textarea>
+            <textarea onChange={this.handleCommentInput}></textarea>
           </CardContent>
           <CardActions style={{ float: "right" }}>
             {this.state.submitted ? <Link onClick={this.handleToggleClick} to='/submission'>Next Page</Link> :
