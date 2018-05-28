@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import CardActions from '@material-ui/core/CardActions';
+import Typography from '@material-ui/core/Typography';
 
 
 
@@ -26,7 +30,7 @@ class Comments extends Component {
     if (this.state.comment === '') {
       return alert('Please comment on your day\'s experience!');
     }
-    let action = {type: 'SUBMIT_COMMENT', payload: this.state.comment};
+    let action = { type: 'SUBMIT_COMMENT', payload: this.state.comment };
     this.props.dispatch(action);
     this.handleToggleClick();
     console.log(this.state.comment);
@@ -41,12 +45,18 @@ class Comments extends Component {
   render() {
     return (
       <div>
-          <h1>Please leave any comments below</h1>
-          <textarea onChange={this.handleCommentInput} rows="5" cols="20"></textarea>
-          <br/>
-          {this.state.submitted ? <Link onClick={this.handleToggleClick} to='/submission'>Next Page</Link>:
-          <Button variant="raised" color="primary" onClick={this.sendComment}>Submit Comment</Button>}
-    
+        <Card style={{ width: "50%", minWidth: "300px", margin: "0 auto" }}>
+          <CardContent>
+            <Typography variant="headline" component="h1" color="primary">
+              Please leave any comments below
+            </Typography>
+            <textarea onChange={this.handleCommentInput} rows="5" cols="20"></textarea>
+          </CardContent>
+          <CardActions style={{ float: "right" }}>
+            {this.state.submitted ? <Link onClick={this.handleToggleClick} to='/submission'>Next Page</Link> :
+              <Button variant="raised" color="primary" onClick={this.sendComment}>Submit Comment</Button>}
+          </CardActions>
+        </Card>
       </div>
     );
   }

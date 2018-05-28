@@ -72,23 +72,6 @@ class AdminTable extends Component {
                     </TableBody>
                 </Table>
             </Paper>
-
-            // <div>
-            //     <table>
-            //         <thead>
-            //             <tr>
-            //                 <th>ID</th>
-            //                 <th>Feeling</th>
-            //                 <th>Content Understanding</th>
-            //                 <th>Staff Support</th>
-            //                 <th>Comments</th>
-            //             </tr>
-            //         </thead>
-            //         <tbody>
-            //             {tableRows}
-            //         </tbody>
-            //     </table>
-            // </div>
         );
     }
 }
